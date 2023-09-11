@@ -1,4 +1,5 @@
 import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.117.1/build/three.module.js";
+import gsap from "gsap";
 
 // SCENE
 // https://threejs.org/docs/#api/en/scenes/Scene
@@ -45,6 +46,15 @@ const material = new THREE.MeshStandardMaterial({
 });
 const mesh = new THREE.Mesh(geometry, material);
 scene.add(mesh);
+
+gsap.from(mesh.scale, {
+    x: 0,
+    y: 0,
+    z: 0,
+    duration: 2,
+    delay: 0.3,
+    ease: "power2.out",
+});
 
 function animate() {
     renderer.render(scene, camera);
