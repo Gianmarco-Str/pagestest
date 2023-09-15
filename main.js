@@ -1,5 +1,7 @@
 import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.117.1/build/three.module.js";
-import gsap from "gsap";
+import { gsap } from "gsap/dist/gsap";
+
+const canvas = document.getElementById("bg");
 
 // SCENE
 // https://threejs.org/docs/#api/en/scenes/Scene
@@ -17,11 +19,11 @@ camera.position.set(0, 0, 30);
 scene.add(camera);
 
 // RENDERER
-const renderer = new THREE.WebGLRenderer({ antialias: true });
+const renderer = new THREE.WebGLRenderer({ antialias: true, canvas });
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(2); // Resolution
 renderer.shadowMap.enabled = true;
-document.body.appendChild(renderer.domElement);
+renderer.render(scene, camera);
 
 // AMBIENT LIGHT
 const ambientLight = new THREE.AmbientLight(0x333333);
